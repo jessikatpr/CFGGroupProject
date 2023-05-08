@@ -77,7 +77,7 @@ def menu():
     print("0. Exit")
     choice = input("Enter your choice: ")
     if choice == "1":
-        savings_sccount()
+        savings_account()
     elif choice == "2":
         stocks_portfolio()
     elif choice == "0":
