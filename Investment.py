@@ -9,17 +9,18 @@ class Investment:
         self.quantity = quantity
         self.purchase_price = purchase_price
 
+
     def current_price(self):
         """Get the current price of the investment from the financial API"""
         # Make a request to the Alpha Vantage API and parse the JSON response
         api_key = "M2BV5Y064JE1OM8H"
-        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={self.symbol}&apikey={api_key}"
+        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol={self.symbol}&apikey={api_key}"
         response = requests.get(url)
         data = json.loads(response.text)
 
-        # Find the most recent day and extract the current price from that day
-        if "Time Series (Daily)" in data:
-            for day, values in data["Time Series (Daily)"].items():
+        # Find the most recent week and extract the current price from that week
+        if "Weekly Time Series" in data:
+            for week, values in data["Weekly Time Series"].items():
                 price = values["1. open"]
                 break
         else:
@@ -27,14 +28,13 @@ class Investment:
 
         return price
 
-
     def current_value(self):
-        """Calculate the current value of the investment"""
-        price = self.current_price()
-        if price:
-            value = self.quantity * price
-        else:
-            value = None
+        """Calculate the current value of the investment DOUBLE CHECK"""
+        value = self.current_price() * self.quantity
+        # if value:
+        #     value = self.quantity * value
+        # else:
+        #     value = 0
         return value
 
 class Stock(Investment):
