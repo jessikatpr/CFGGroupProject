@@ -21,7 +21,8 @@ class Investment:
         # Find the most recent week and extract the current price from that week
         if "Weekly Time Series" in data:
             for week, values in data["Weekly Time Series"].items():
-                price = values["1. open"]
+                price = float(values["1. open"])
+                print(f"Current price for {self.name} ({self.symbol}): {price}")
                 break
         else:
             price = None
@@ -30,11 +31,11 @@ class Investment:
 
     def current_value(self):
         """Calculate the current value of the investment DOUBLE CHECK"""
-        value = self.current_price() * self.quantity
-        # if value:
-        #     value = self.quantity * value
-        # else:
-        #     value = 0
+        price = self.current_price()
+        if price is not None:
+            value = price * self.quantity
+        else:
+            value = 0
         return value
 
 class Stock(Investment):
