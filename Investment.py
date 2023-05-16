@@ -8,32 +8,44 @@ class Investment:
         self.name = name
         self.quantity = quantity
         self.purchase_price = purchase_price
-
+        self._current_price = None  # Store the current price
 
     def current_price(self):
         """Get the current price of the investment from the financial API"""
-        # Make a request to the Alpha Vantage API and parse the JSON response
-        api_key = "M2BV5Y064JE1OM8H"
-        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol={self.symbol}&apikey={api_key}"
-        response = requests.get(url)
-        data = json.loads(response.text)
+        if self._current_price is not None:
+            return self._current_price
 
-        # Find the most recent week and extract the current price from that week
-        if "Weekly Time Series" in data:
-            for week, values in data["Weekly Time Series"].items():
+        # Make a request to the Alpha Vantage API and parse the JSON response
+        api_key = "LS80WTP12NGATLQX"
+        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={self.symbol}&apikey={api_key}"
+        try:
+            response = requests.get(url)
+            if response.status_code != 200:
+                print(f"Error retrieving current price for {self.name} ({self.symbol}): {response.text}")
+                return None
+            data = json.loads(response.text)
+        except requests.exceptions.RequestException as e:
+            print(f"Error retrieving current price for {self.name} ({self.symbol}): {e}")
+            return None
+
+        # Find the most recent day and extract the current price from that day
+        if "Time Series (Daily)" in data:
+            for day, values in data["Time Series (Daily)"].items():
                 price = float(values["1. open"])
+                self._current_price = price  # Store the current price
                 print(f"Current price for {self.name} ({self.symbol}): {price}")
                 break
         else:
             price = None
+            print(f"No price data found for {self.name} ({self.symbol})")
 
         return price
 
     def current_value(self):
-        """Calculate the current value of the investment DOUBLE CHECK"""
-        price = self.current_price()
-        if price is not None:
-            value = price * self.quantity
+        """Calculate the current value of the investment"""
+        price = self.current_price()  # Use the stored current price
+        if price:
+            value = self.quantity * price
         else:
             value = 0
         return value
@@ -67,8 +79,9 @@ class Portfolio:
 
     def total_value(self):
         """Calculate the total value of the portfolio"""
-        value = sum([investment.current_value() for investment in self.investments])
+        value = sum(investment.current_value() for investment in self.investments)
         return value
+
 
     def display(self):
         """Display the portfolio data"""
