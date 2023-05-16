@@ -1,0 +1,42 @@
+h1 {
+    border: 2px #eee solid;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+}
+
+p {
+    font-size: 14px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffd900;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #004fb6;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.nav{
+img: center
+}
