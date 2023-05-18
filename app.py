@@ -8,9 +8,9 @@ app.config['SECRET_KEY'] = 'E8E7210201393474C554BF92'
 def index():
     return render_template('index.html')
 
-@app.route("/savingsinvestments", methods=["POST", "GET"])
-def savingsinvestments():
-    return render_template("savingsinvestments.html")
+@app.route("/savings", methods=["POST", "GET"])
+def savings():
+    return render_template("savings.html")
 
 @app.route("/about")
 def about():
