@@ -20,6 +20,36 @@ def about():
 def budgeting():
     return render_template("budgeting.html")
 
+# Investment Selection Page
+@app.route('/investment_search',  methods=["GET", "POST"])
+def calculate_value():
+    """Get stock quote."""
+    if request.method == "POST":
+
+        # Ensure symbol was submitted
+        if not request.form.get("symbol"):
+            return "must provide stock symbol!"
+
+        if not request.form.get("quantity"):
+            return "must provide quantity!"
+
+        else:
+            data = temp(request.form.get("symbol"))
+            if data:
+                return render_template("investment_result.html", name=data["name"], symbol=data["symbol"], price=data["price"])
+            else:
+                return "invalid symbol!"
+
+        # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("investment_search.html")
+
+
+# Display result of investment search
+@app.route('/investment_result')
+def display_results():
+    return render_template("investment_result.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
