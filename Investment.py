@@ -119,6 +119,15 @@ def run():
 
     print(stock1.current_price())
 
+def temp(symbol):
+    name = "Apple"
+    price = 100
+    return {
+            "name": name,
+            "price": price,
+            "symbol": symbol,
+        }
+    
 if __name__ == '__main__':
     run()
 
