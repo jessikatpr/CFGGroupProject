@@ -7,7 +7,12 @@
 <body>
      {% include 'template.html' %}
 <h1>Savings calculator</h1>
-
+    <form action="/savings" method="post">
+        <input autocomplete="off" id="money" name="money" placeholder="Amount of money" type="number">
+        <input autocomplete="off" id="years" name="years" placeholder="Number of years" type="number">
+        <input autocomplete="off" id="interest" name="interest" placeholder="Interest rate (%)" type="number">
+        <button type="submit">Calculate returns</button>
+    </form>
 
 </body>
 </html>
