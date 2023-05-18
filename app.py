@@ -10,7 +10,23 @@ def index():
 
 @app.route("/savings", methods=["POST", "GET"])
 def savings():
-    return render_template("savings.html")
+    # User reached rout via POST (submitting info in the form)
+    if request.method == "POST":
+        # Ensure all fields were filled in
+        if not request.form.get("money"):
+            return "must fill in all fields!"
+        if not request.form.get("years"):
+            return "must fill in all fields!"
+        if not request.form.get("interest"):
+            return "must fill in all fields!"
+        money = float(request.form.get("money"))
+        years = float(request.form.get("years"))
+        interest = float(request.form.get("interest"))
+        final_money = money * ((1 + interest / 100) ** years)
+        return str(final_money)
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("savings.html")
 
 @app.route("/about")
 def about():
