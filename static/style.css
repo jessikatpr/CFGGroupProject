@@ -1,42 +1,85 @@
 h1 {
-    border: 2px #eee solid;
-    color: black;
-    text-align: center;
-    padding: 10px;
-    font-size: 20px;
-    font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+  border: 2px #eee solid;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
 }
 
+h2 {
+  color: black;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 16px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+}
+
+
 p {
-    font-size: 14px;
+  padding-left: 10px;
+  font-size: 14px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #ffd900;
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #ffd900;
 }
 
 li {
-  float: left;
+float: left;
 }
 
 li a {
-  display: block;
-  color: #004fb6;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+display: block;
+color: #004fb6;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+background-color: #111;
 }
 
 .nav{
 img: center
+}
+
+.alert {
+  padding: 20px;
+  margin: 10px;
+  color: #ffd900;
+  background-color: #004fb6;
+      }
+
+form {
+  padding: 10px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+  font-size: 14px;
+}
+
+label {
+  padding: 10px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+  font-size: 14px;
+}
+
+.output {
+  padding: 10px;
+  font-family: source_sans_pro_vf,fallback-system-fonts,sans-serif;
+  font-size: 14px;
 }
