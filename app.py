@@ -23,10 +23,15 @@ def savings():
         years = float(request.form.get("years"))
         interest = float(request.form.get("interest"))
         final_money = money * ((1 + interest / 100) ** years)
-        return str(final_money)
+        output = str(f"You said you would save £{money} over {years} years with an interest rate of {interest}%. You will earn £{final_money} over {years} years.")
+        return render_template("savings_result.html", final_money=final_money, output=output)
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("savings.html")
+
+@app.route("/savings_result", methods=["POST", "GET"])
+def savings_result():
+    return render_template("savings_result.html")
 
 @app.route("/about")
 def about():
