@@ -101,33 +101,79 @@ class Portfolio:
 
         print(f"Total Portfolio Value: {self.total_value()}")
 
+# def run():
+#     # Create an empty portfolio
+#     portfolio = Portfolio()
+#
+#     # Add investments to the portfolio
+#     stock1 = Stock("AAPL", "Apple Inc.", 100, 130.00)
+#     portfolio.add_investment(stock1)
+#
+#     bond1 = Bond("TSLA", "Tesla Inc.", 50, 1000.00, 0.05)
+#     portfolio.add_investment(bond1)
+#
+#     mutual_fund1 = MutualFund("SPY", "SPDR S&P 500 ETF Trust", 200, 350.00, 0.01)
+#     portfolio.add_investment(mutual_fund1)
+#
+#     portfolio.display()
+#
+#     print(stock1.current_price())
+#
+# if __name__ == '__main__':
+#     run()
+
 def run():
     # Create an empty portfolio
     portfolio = Portfolio()
 
-    # Add investments to the portfolio
-    stock1 = Stock("AAPL", "Apple Inc.", 100, 130.00)
-    portfolio.add_investment(stock1)
+    # User input for investment details
+    while True:
+        investment_type = input("Enter the investment type (stock, bond, mutual fund) or 'done' to finish: ")
+        if investment_type.lower() == "done":
+            break
 
-    bond1 = Bond("TSLA", "Tesla Inc.", 50, 1000.00, 0.05)
-    portfolio.add_investment(bond1)
+        keyword = input("Enter the keyword to search for the investment: ")
 
-    mutual_fund1 = MutualFund("SPY", "SPDR S&P 500 ETF Trust", 200, 350.00, 0.01)
-    portfolio.add_investment(mutual_fund1)
+        # Make a request to the Alpha Vantage API (different to the one above) to search for symbols based on the keyword
+        api_key = "M2BV5Y064JE1OM8H"
+        url = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={keyword}&apikey={api_key}"
+        try:
+            response = requests.get(url)
+            if response.status_code != 200:
+                print(f"Error retrieving investment symbol for keyword '{keyword}': {response.text}")
+                symbol = input("Enter the symbol: ")  # Prompt the user for the symbol
+            else:
+                data = json.loads(response.text)
+                best_match = data.get("bestMatches", [])
+                if len(best_match) > 0:
+                    symbol = best_match[0].get("1. symbol")
+                    name = best_match[0].get("2. name")
+                    print(f"Found investment: {name} ({symbol})")
+                else:
+                    print(f"No investment found for keyword '{keyword}'")
+                    symbol = input("Enter the symbol: ")  # Prompt the user for the symbol
+        except requests.exceptions.RequestException as e:
+            print(f"Error retrieving investment symbol for keyword '{keyword}': {e}")
+            symbol = input("Enter the symbol: ")  # Prompt the user for the symbol
+
+        quantity = float(input("Enter the quantity: "))
+        purchase_price = float(input("Enter the purchase price: "))
+
+        if investment_type.lower() == "stock":
+            investment = Stock(symbol, name, quantity, purchase_price)
+        elif investment_type.lower() == "bond":
+            coupon_rate = float(input("Enter the coupon rate: "))
+            investment = Bond(symbol, name, quantity, purchase_price, coupon_rate)
+        elif investment_type.lower() == "mutual fund":
+            expense_ratio = float(input("Enter the expense ratio: "))
+            investment = MutualFund(symbol, name, quantity, purchase_price, expense_ratio)
+        else:
+            print("Invalid investment type. Please try again.")
+            continue
+
+        portfolio.add_investment(investment)
 
     portfolio.display()
 
-    print(stock1.current_price())
-
-def temp(symbol):
-    name = "Apple"
-    price = 100
-    return {
-            "name": name,
-            "price": price,
-            "symbol": symbol,
-        }
-    
 if __name__ == '__main__':
     run()
-
