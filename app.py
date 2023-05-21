@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
-# from code import savings_account
+from investment import investment_lookup
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'E8E7210201393474C554BF92'
