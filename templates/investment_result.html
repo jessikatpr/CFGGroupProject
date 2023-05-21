@@ -5,7 +5,28 @@
     <title>Investment Result</title>
 </head>
 <body>
-    <h1>Investments result page - WIP</h1>
-    This is the stock you selected and its price
+    {% include 'template.html' %}
+    <h1>Investments result page</h1>
+
+<table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ symbol }}</td>
+                <td>{{ name }}</td>
+                <td>{{ price }}</td>
+                <td>{{ quantity }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
