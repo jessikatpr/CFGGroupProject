@@ -45,9 +45,10 @@ def get_payslip():
 
 def get_required_info(extractText_final):
     """
-    Use regex to match the pattern 
-    Input: string
+    Use regex to match the pattern from payslip file
+    Input: string from pdfplumber
     """
+    
     # Match with Regex patterns
     PayDate_re = re.compile(r"(Date: )(\d{2}/\d{2}/\d{4})")
     Salary_re = re.compile(r"(Salary)(\s)(\d+.\d+)")
