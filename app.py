@@ -42,7 +42,7 @@ def budgeting():
     return render_template("budgeting.html")
 
 # Investment Selection Page
-@app.route('/investment_search',  methods=["GET", "POST"])
+@app.route("/investment_search",  methods=["GET", "POST"])
 def calculate_value():
     """Get stock quote."""
     if request.method == "POST":
@@ -55,11 +55,16 @@ def calculate_value():
             return "must provide quantity!"
 
         else:
-            data = temp(request.form.get("symbol"))
+            # data = temp(request.form.get("symbol"))
+            # if data:
+            #     return render_template("investment_result.html", name=data["name"], symbol=data["symbol"], price=data["price"])
+            # else:
+            #     return "invalid symbol!"
+            data = investment_lookup(request.form.get("symbol"), request.form.get("quantity"))
             if data:
-                return render_template("investment_result.html", name=data["name"], symbol=data["symbol"], price=data["price"])
+                return render_template("investment_result.html", name=data["name"], symbol=data["symbol"], price=data["price"], value=data["value"], quantity=data["quantity"])
             else:
-                return "invalid symbol!"
+                return "invalid input!"
 
         # User reached route via GET (as by clicking a link or via redirect)
     else:
