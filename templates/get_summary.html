@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budgeting</title>
+
+</head>
+<body>
+     {% extends 'template.html' %}
+
+     {% block content %}
+        <h1>Budgeting Summary</h1>
+        <div>
+            <p>The stacked bar chart shows you how much you spend in comparison to your income. For the remaining amount of money, we recommend you to invest with us. Check out <a href="{{ url_for('savings') }}">Savings</a> or <a href="{{ url_for('calculate_value') }}">Investments</a>.</p>
+            <image src="static/BudgetSummaryChart.png"></image>
+        </div>
+
+
+    {% endblock content %}
+</body>
+</html>

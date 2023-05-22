@@ -1,8 +1,18 @@
+import os
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from flask_investment import investment_lookup
+from werkzeug.utils import secure_filename
+# from code import savings_account
+
+# set an upload folder
+UPLOAD_FOLDER = 'static/'
+ALLOWED_EXTENSIONS = {'pdf', 'png', 'csv'}
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'E8E7210201393474C554BF92'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 @app.route('/')
 def index():
@@ -39,7 +49,14 @@ def about():
 
 @app.route("/budgeting", methods=["POST", "GET"])
 def budgeting():
-    return render_template("budgeting.html")
+    payslip_file = url_for('static', filename="Payslip test file.pdf")
+    expense_file = url_for('static', filename='Expense test file.csv')
+    return render_template("budgeting.html", payslip_file=payslip_file, expense_file=expense_file)
+
+@app.route("/get_summary", methods=["POST"])
+def get_summary():
+    if request.method == "POST":
+        return render_template("get_summary.html")
 
 # Investment Selection Page
 @app.route("/investment_search",  methods=["GET", "POST"])
