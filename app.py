@@ -49,22 +49,17 @@ def calculate_value():
 
         # Ensure symbol was submitted
         if not request.form.get("symbol"):
-            return "must provide stock symbol!"
+            return render_template('error.html')
 
         if not request.form.get("quantity"):
-            return "must provide quantity!"
+            return render_template('error.html')
 
         else:
-            # data = temp(request.form.get("symbol"))
-            # if data:
-            #     return render_template("investment_result.html", name=data["name"], symbol=data["symbol"], price=data["price"])
-            # else:
-            #     return "invalid symbol!"
             data = investment_lookup(request.form.get("symbol"), request.form.get("quantity"))
             if data:
                 return render_template("investment_result.html", name=data["name"], symbol=data["symbol"], price=data["price"], value=data["value"], quantity=data["quantity"])
             else:
-                return "invalid input!"
+                return render_template('error.html')
 
         # User reached route via GET (as by clicking a link or via redirect)
     else:
