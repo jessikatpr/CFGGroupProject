@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Our CSS and Bootstrap CSS -->
-      <link rel="stylesheet" href="./static/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/styles.css">
 
     <title>Templates</title>
   </head>
@@ -15,13 +15,20 @@
 
   <nav>
       <ul>
-        <img src="https://static.aviva.io/assets/logo/aviva-logo.svg"/>
+
         <li><a href="{{ url_for('index') }}">Home</a></li>
         <li><a href="{{ url_for('savings') }}">Savings</a></li>
         <li><a href="{{ url_for('calculate_value') }}">Investments</a></li>
         <li><a href="{{ url_for('budgeting') }}">Budgeting</a></li>
         <li><a href="{{ url_for('about') }}">About</a></li>
+        <div class="nav-right">
+          <li><img src="https://static.aviva.io/assets/logo/aviva-logo.svg"/></li>
+          </div>
+        <div class="nav-right-top">
+          <li><img src="https://codefirstgirls.com/wp-content/uploads/elementor/thumbs/White-Code-First-Girls-Logo-Transparent-p75th7g47zmtuf6o6zuyna1izwc77lixwo6bygc4gk.png"</li>
+        </div>
       </ul>
+
   </nav>
 
     <!-- Optional JavaScript -->
