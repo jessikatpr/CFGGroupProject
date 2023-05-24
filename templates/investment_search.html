@@ -5,43 +5,48 @@
     <title>Investment Search</title>
 </head>
 <body>
-    <h1>Investments search page - WIP</h1>
-    Select your stock
-
-    <table>
-        <tr>
-            <th>symbol</th>
-            <th>name</th>
-        </tr>
-        <tr>	<td>	A	</td>	<td>	Agilent Technologies Inc	</td>	</tr>
-        <tr>	<td>	AA	</td>	<td>	Alcoa Corp	</td>	</tr>
-        <tr>	<td>	AAA	</td>	<td>	AXS FIRST PRIORITY CLO BOND ETF 	</td>	</tr>
-        <tr>	<td>	AAAU	</td>	<td>	Goldman Sachs Physical Gold ETF	</td>	</tr>
-        <tr>	<td>	AAC	</td>	<td>	Ares Acquisition Corporation - Class A	</td>	</tr>
-        <tr>	<td>	AAC-U	</td>	<td>	Ares Acquisition Corporation - Units (1 Ord Share Class A & 1/5 War)	</td>	</tr>
-        <tr>	<td>	AAC-WS	</td>	<td>	Ares Acquisition Corporation - Warrants (01/01/9999)	</td>	</tr>
-        <tr>	<td>	AACG	</td>	<td>	ATA Creativity Global	</td>	</tr>
-        <tr>	<td>	AACI	</td>	<td>	Armada Acquisition Corp I	</td>	</tr>
-        <tr>	<td>	AACIU	</td>	<td>	Armada Acquisition Corp I - Units (1 Ord & 1/2 War)	</td>	</tr>
-        <tr>	<td>	AACIW	</td>	<td>	Armada Acquisition Corp I - Warrants (13/08/2026)	</td>	</tr>
-        <tr>	<td>	AACT-U	</td>	<td>	Ares Acquisition Corporation II - Units (1 Ord Class A & 1/2 War)	</td>	</tr>
-        <tr>	<td>	AADI	</td>	<td>	Aadi Bioscience Inc	</td>	</tr>
-        <tr>	<td>	AADR	</td>	<td>	AdvisorShares Dorsey Wright ADR ETF	</td>	</tr>
-        <tr>	<td>	AAIC	</td>	<td>	Arlington Asset Investment Corp - Class A	</td>	</tr>
-        <tr>	<td>	AAIC-P-B	</td>	<td>	Arlington Asset Investment Corp	</td>	</tr>
-        <tr>	<td>	AAIC-P-C	</td>	<td>	Arlington Asset Investment Corp	</td>	</tr>
-        <tr>	<td>	AAIN	</td>	<td>	Arlington Asset Investment Corp	</td>	</tr>
-        <tr>	<td>	AAL	</td>	<td>	American Airlines Group Inc	</td>	</tr>
-        <tr>	<td>	AAMC	</td>	<td>	Altisource Asset Management Corp	</td>	</tr>
-        <tr>	<td>	AAME	</td>	<td>	Atlantic American Corp	</td>	</tr>
-        <tr>	<td>	AAN	</td>	<td>	Aarons Company Inc (The)	</td>	</tr>
-        <tr>	<td>	AAOI	</td>	<td>	Applied Optoelectronics Inc	</td>	</tr>
-        <tr>	<td>	AAON	</td>	<td>	AAON Inc	</td>	</tr>
-    </table>
+    {% include 'template.html' %}
+    <h1>Investments search page</h1>
+    <br>
+    <div class="center-form">
     <form action="/investment_search" method="post">
         <input autocomplete="off" id="symbol" name="symbol" placeholder="Stock symbol" type="text">
         <input autocomplete="off" id="quantity" name="quantity" placeholder="Quantity" type="number">
-        <button type="submit">Quote</button>
+        <button type="submit" class="btn btn-primary my-1">Quote</button>
     </form>
+    </div>
+    <br>
+    <p>
+        Below are some example stock symbols, although any valid symbol can be used. Please enter the symbol of the stock you wish to look up, and the quantity of shares you wish to purchase.
+    </p>
+    <br>
+    <table id="stocks">
+            <tr><th>Symbol</th> <th>Name</th></tr>
+            <tr>	<td>	A	</td>	<td>	Agilent Technologies Inc	</td>	</tr>
+            <tr>	<td>	ABB	</td>	<td>	ABB Ltd	</td>	</tr>
+            <tr>	<td>	AAPL	</td>	<td>	Apple Inc	</td>	</tr>
+            <tr>	<td>	ACN	</td>	<td>	Accenture plc - Class A	</td>	</tr>
+            <tr>	<td>	ADBE	</td>	<td>	Adobe Inc	</td>	</tr>
+            <tr>	<td>	BSAC	</td>	<td>	Banco Santander Chile SA	</td>	</tr>
+            <tr>	<td>	DAL	</td>	<td>	Delta Air Lines Inc	</td>	</tr>
+            <tr>	<td>	DEO	</td>	<td>	Diageo plc	</td>	</tr>
+            <tr>	<td>	DUOL	</td>	<td>	Duolingo Inc - Class A	</td>	</tr>
+            <tr>	<td>	ETSY	</td>	<td>	Etsy Inc	</td>	</tr>
+            <tr>	<td>	F	</td>	<td>	Ford Motor Company	</td>	</tr>
+            <tr>	<td>	GOOGL	</td>	<td>	Alphabet Inc - Class A	</td>	</tr>
+            <tr>	<td>	GS	</td>	<td>	Goldman Sachs Group Inc	</td>	</tr>
+            <tr>	<td>	HAL	</td>	<td>	Halliburton Company	</td>	</tr>
+            <tr>	<td>	HD	</td>	<td>	Home Depot Inc	</td>	</tr>
+            <tr>	<td>	JPM	</td>	<td>	JPMorgan Chase & Company	</td>	</tr>
+            <tr>	<td>	MA	</td>	<td>	Mastercard Incorporated - Class A	</td>	</tr>
+            <tr>	<td>	ORCL	</td>	<td>	Oracle Corp	</td>	</tr>
+            <tr>	<td>	PGRE	</td>	<td>	Paramount Group Inc	</td>	</tr>
+            <tr>	<td>	SONY	</td>	<td>	Sony Group Corporation	</td>	</tr>
+            <tr>	<td>	TSLA	</td>	<td>	Tesla Inc	</td>	</tr>
+            <tr>	<td>	UBER	</td>	<td>	Uber Technologies Inc	</td>	</tr>
+            <tr>	<td>	WFC	</td>	<td>	Wells Fargo & Company	</td>	</tr>
+            <tr>	<td>	XOM	</td>	<td>	Exxon Mobil Corp	</td>	</tr>
+    </table>
+    <br><br>
 </body>
 </html>
