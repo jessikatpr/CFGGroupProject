@@ -13,6 +13,33 @@
 <h2>Instant Savings</h2>
 <p>Access your money whenever you need it, without having to give notice. Ideal for if you need to dip into your savings.</p>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bank name</th>
+      <th scope="col">Interest rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Aviva</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Lloyds</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Natwest</td>
+      <td>3%</td>
+    </tr>
+  </tbody>
+</table>
+
 <form action="" method = "POST">
   <div class="form-group">
     <label for="formGroupExampleInput">Choose the amount of money you want to deposit:</label>
@@ -23,11 +50,6 @@
       <input autocomplete="off" class="form-control" id="formGroupExampleInput2" name="years" placeholder="Years to invest" type="number">
       <label for="formGroupExampleInput3">Select the interest rate:</label>
       <input autocomplete="off" class="form-control" id="formGroupExampleInput3" id="interest" name="interest" placeholder="Interest rate (%)" type="number">
-<!--    <select id="company" name="company">-->
-<!--      <option value="natwest" name="natwest">Natwest 1.0225%</option>-->
-<!--      <option value="aviva" name="aviva">Aviva 1.02%</option>-->
-<!--      <option value="lloyds" name="lloyds">Lloyds 1.0247%</option>-->
-<!--    </select>-->
     <button type="submit" class="btn btn-primary my-1">Submit</button>
   </div>
 </form>
@@ -37,7 +59,50 @@
     making more of your money in the long term. The longer you decide to leave them, the more rewarding your
     interest rate will be.</p>
 
-<p>NEED TO ADD FORM HERE IF USING</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bank name</th>
+      <th scope="col">Rate if invested for less than 3 years</th>
+      <th scope="col">Rate if invested for more than 3 years</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Aviva</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Lloyds</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Natwest</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+<form action="" method = "POST">
+  <div class="form-group">
+    <label for="formGroupExampleInput">Choose the amount of money you want to deposit:</label>
+      <input autocomplete="off" class="form-control" id="formGroupExampleInput" name="money" placeholder="Amount to deposit" type="number">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Decide how many years to invest your money for:</label>
+      <input autocomplete="off" class="form-control" id="formGroupExampleInput2" name="years" placeholder="Years to invest" type="number">
+      <label for="formGroupExampleInput3">Select the interest rate:</label>
+      <input autocomplete="off" class="form-control" id="formGroupExampleInput3" id="interest" name="interest" placeholder="Interest rate (%)" type="number">
+    <button type="submit" class="btn btn-primary my-1">Submit</button>
+  </div>
+</form>   
 
 </body>
 </html>
